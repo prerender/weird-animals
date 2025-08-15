@@ -14,7 +14,16 @@ collections:
         label: "Homepage"
         name: "homepage"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Heading", name: "heading", widget: "string" }
-          - { label: "Subheading", name: "subheading", widget: "string" }
-          - { label: "Content", name: "content", widget: "markdown" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Featured title", name: "featuredTitle", widget: "string" }
+          - {
+              label: "Featured subtitle",
+              name: "featuredSubtitle",
+              widget: "string",
+            }
+          - { label: "Footer title", name: "footerTitle", widget: "string" }
+          - {
+              label: "Footer subtitle",
+              name: "footerSubtitle",
+              widget: "string",
+            }

@@ -1,8 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Homepage from "./Homepage";
-import Categories from "./Categories";
-import Details from "./Details";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import HomePage from "./pages/homepage/Homepage";
+import CategoriesPage from "./pages/categoriesPage/CategoriesPage";
+import CategoryDetailPage from "./pages/categoriesDetailsPage/CategoriesDetailPage";
+import AnimalDetailPage from "./pages/animalDetailsPage/AnimalDetailsPage";
 
 function App() {
   const location =
@@ -14,24 +16,16 @@ function App() {
 
   return (
     <Router>
-      <nav className="bg-blue-500 text-white p-4 mb-8">
-        <div className="flex space-x-4">
-          <Link to="/" className="hover:underline">
-            Home
-          </Link>
-          <Link to="/categories" className="hover:underline">
-            Categories
-          </Link>
-          <Link to="/details" className="hover:underline">
-            Details
-          </Link>
-        </div>
-      </nav>
-      <div className="container mx-auto px-4">
+      <div className="min-h-screen bg-gray-50">
+        <Header />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/details" element={<Details />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route
+            path="/category/:categoryId"
+            element={<CategoryDetailPage />}
+          />
+          <Route path="/animal/:animalId" element={<AnimalDetailPage />} />
         </Routes>
       </div>
     </Router>
