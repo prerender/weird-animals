@@ -4,6 +4,9 @@ import { ArrowRight, Globe, Users, BookOpen } from "lucide-react";
 import AnimalCard from "../../components/AnimalCard";
 import { animals } from "../../data/animals";
 
+// Read all JSON files in the data folder
+import contents from "./index.json";
+
 export default function HomePage() {
   // Get featured animals (first 3)
   const featuredAnimals = animals.slice(0, 3);
@@ -28,8 +31,7 @@ export default function HomePage() {
               on Earth
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-teal-100">
-              Journey into the extraordinary world of nature's most bizarre and
-              fascinating creatures
+              {contents.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -84,11 +86,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Featured Creatures
+              {contents.featuredTitle}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Meet some of the most extraordinary animals you've probably never
-              heard of
+              {contents.featuredSubtitle}
             </p>
           </div>
 
@@ -114,11 +115,10 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Expand Your Wildlife Knowledge?
+            {contents.footerTitle}
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            Dive deeper into the fascinating world of nature's most unusual
-            creatures
+            {contents.footerSubtitle}
           </p>
           <Link
             to="/categories"
