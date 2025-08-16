@@ -1,0 +1,16 @@
+{
+  "size": "30 cm (12 inches)",
+  "habitat": "Deep ocean waters",
+  "funFacts": [
+    "123",
+    "asdasd"
+  ],
+  "name": "Blobfish",
+  "conservationStatus": "Vulnerable",
+  "scientificName": "Blobfish",
+  "diet": "Omnivore",
+  "location": "Australia and New Zealand",
+  "image": "https://images.pexels.com/photos/8969226/pexels-photo-8969226.jpeg",
+  "description": "The blobfish is a gelatinous mass that lives at depths where the pressure is 60 to 120 times greater than at sea level. Its jelly-like composition allows it to survive in these extreme conditions",
+  "category": "deep sea"
+}
