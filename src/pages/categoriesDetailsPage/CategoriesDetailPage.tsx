@@ -1,8 +1,11 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+
 import AnimalCard from "../../components/AnimalCard";
-import { categories, getAnimalsByCategory } from "../../data/animals";
+import { categories } from "../../data/animals";
+import { getAnimalsByCategory } from "~features/Animal/Animal";
+import { getCategoryBySlug } from "~features/AnimalCategory/AnimalCategory";
 
 export default function CategoryDetailPage() {
   const { categoryId } = useParams<{ categoryId: string }>();
@@ -11,7 +14,7 @@ export default function CategoryDetailPage() {
     return <div>Category not found</div>;
   }
 
-  const category = categories.find((cat) => cat.id === categoryId);
+  const category = getCategoryBySlug(categoryId);
   const animals = getAnimalsByCategory(categoryId);
 
   if (!category) {
@@ -34,7 +37,10 @@ export default function CategoryDetailPage() {
 
         {/* Category Header */}
         <div
-          className={`relative rounded-xl overflow-hidden mb-12 bg-gradient-to-br ${category.color}`}
+          className={`relative rounded-xl overflow-hidden mb-12 bg-gradient-to-br`}
+          style={{
+            background: `linear-gradient(to bottom right, ${category.color}, #1f2937)`,
+          }}
         >
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative z-10 px-8 py-16 text-center text-white">
@@ -57,7 +63,7 @@ export default function CategoryDetailPage() {
         {animals.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {animals.map((animal) => (
-              <AnimalCard key={animal.id} animal={animal} />
+              <AnimalCard key={animal.slug} animal={animal} />
             ))}
           </div>
         ) : (

@@ -33,3 +33,10 @@ export function getAllCategories(): AnimalCategory[] {
     return [];
   }
 }
+
+// Function to get a category by its slug
+export function getCategoryBySlug(slug: string): AnimalCategory | null {
+  const categories = getAllCategories();
+
+  return categories.find((category) => category.slug === slug) || null;
+}

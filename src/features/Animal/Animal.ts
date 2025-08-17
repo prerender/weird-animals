@@ -59,3 +59,12 @@ export function getRandomAnimal(): Animal | null {
   const randomIndex = Math.floor(Math.random() * animals.length);
   return animals[randomIndex];
 }
+
+// Function to get all animals that belong to a specific category
+export function getAnimalsByCategory(categoryName: string): Animal[] {
+  const animals = getAllAnimals();
+
+  return animals.filter(
+    (animal) => animal.category.toLowerCase() === categoryName.toLowerCase()
+  );
+}

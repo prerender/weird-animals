@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAnimalsByCategory } from "../data/animals";
 
 import { type AnimalCategory } from "~features/AnimalCategory/AnimalCategory";
+import { getAnimalsByCategory } from "~features/Animal/Animal";
 
 interface CategoryCardProps {
   category: AnimalCategory;
