@@ -68,3 +68,10 @@ export function getAnimalsByCategory(categoryName: string): Animal[] {
     (animal) => animal.category.toLowerCase() === categoryName.toLowerCase()
   );
 }
+
+// Function to get an animal by its slug
+export function getAnimalBySlug(slug: string): Animal | null {
+  const animals = getAllAnimals();
+
+  return animals.find((animal) => animal.slug === slug) || null;
+}

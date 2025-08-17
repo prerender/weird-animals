@@ -40,3 +40,9 @@ export function getCategoryBySlug(slug: string): AnimalCategory | null {
 
   return categories.find((category) => category.slug === slug) || null;
 }
+
+export function getCategoryByName(name: string): AnimalCategory | null {
+  const categories = getAllCategories();
+
+  return categories.find((category) => category.name === name) || null;
+}

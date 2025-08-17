@@ -1,7 +1,9 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Ruler, Utensils, Shield, Info } from "lucide-react";
-import { getAnimalById, categories } from "../../data/animals";
+
+import { getAnimalBySlug } from "~features/Animal/Animal";
+import { getCategoryByName } from "~features/AnimalCategory/AnimalCategory";
 
 export default function AnimalDetailPage() {
   const { animalId } = useParams<{ animalId: string }>();
@@ -10,13 +12,13 @@ export default function AnimalDetailPage() {
     return <div>Animal not found</div>;
   }
 
-  const animal = getAnimalById(animalId);
+  const animal = getAnimalBySlug(animalId);
 
   if (!animal) {
     return <div>Animal not found</div>;
   }
 
-  const category = categories.find((cat) => cat.id === animal.category);
+  const category = getCategoryByName(animal.category);
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
@@ -35,6 +37,7 @@ export default function AnimalDetailPage() {
     }
   };
 
+  console.log(animal, category);
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -45,7 +48,7 @@ export default function AnimalDetailPage() {
           </Link>
           <span className="text-gray-400">/</span>
           <Link
-            to={`/category/${animal.category}`}
+            to={`/category/${category?.slug}`}
             className="text-teal-600 hover:text-teal-700"
           >
             {category?.name}
