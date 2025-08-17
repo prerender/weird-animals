@@ -2,22 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getAnimalsByCategory } from "../data/animals";
 
+import { type AnimalCategory } from "~features/AnimalCategory/AnimalCategory";
+
 interface CategoryCardProps {
-  category: {
-    id: string;
-    name: string;
-    description: string;
-    color: string;
-  };
+  category: AnimalCategory;
 }
 
 export default function CategoryCard({ category }: CategoryCardProps) {
-  const animalCount = getAnimalsByCategory(category.id).length;
+  const animalCount = getAnimalsByCategory(category.slug).length;
 
   return (
-    <Link to={`/category/${category.id}`} className="group block">
-      <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-        <div className={`h-32 bg-gradient-to-br ${category.color} relative`}>
+    <Link to={`/category/${category.slug}`} className="group block h-full">
+      <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col">
+        <div
+          className="h-32 relative flex-shrink-0"
+          style={{
+            background: `linear-gradient(to bottom right, ${category.color}, #1f2937)`,
+          }}
+        >
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
           <div className="relative z-10 p-6 h-full flex flex-col justify-end">
             <h3 className="text-xl font-bold text-white mb-1">
@@ -29,7 +31,7 @@ export default function CategoryCard({ category }: CategoryCardProps) {
           </div>
         </div>
 
-        <div className="bg-white p-4">
+        <div className="bg-white p-4 flex flex-col justify-between flex-grow">
           <p className="text-gray-600 text-sm group-hover:text-gray-800 transition-colors">
             {category.description}
           </p>

@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Users, BookOpen } from "lucide-react";
+
+import { getAllCategories } from "~features/AnimalCategory/AnimalCategory";
 import AnimalCard from "../../components/AnimalCard";
 import { animals } from "../../data/animals";
+import pageContents from "./index.json";
 
-// Read all JSON files in the data folder
-import contents from "./index.json";
+const categories = getAllCategories();
 
 export default function HomePage() {
   // Get featured animals (first 3)
@@ -31,7 +33,7 @@ export default function HomePage() {
               on Earth
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-teal-100">
-              {contents.subtitle}
+              {pageContents.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -67,7 +69,9 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full mb-4">
                 <Globe className="w-8 h-8" />
               </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-2">6</h3>
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">
+                {categories.length}
+              </h3>
               <p className="text-gray-600">Habitat Categories</p>
             </div>
             <div className="text-center">
@@ -86,10 +90,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {contents.featuredTitle}
+              {pageContents.featuredTitle}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {contents.featuredSubtitle}
+              {pageContents.featuredSubtitle}
             </p>
           </div>
 
@@ -115,10 +119,10 @@ export default function HomePage() {
       <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {contents.footerTitle}
+            {pageContents.footerTitle}
           </h2>
           <p className="text-xl text-gray-300 mb-8">
-            {contents.footerSubtitle}
+            {pageContents.footerSubtitle}
           </p>
           <Link
             to="/categories"
