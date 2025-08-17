@@ -48,10 +48,6 @@ export default function Header() {
 
           {/* Search and Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-gray-400 hover:text-gray-500 hidden sm:block">
-              <Search className="w-5 h-5" />
-            </button>
-
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 text-gray-400 hover:text-gray-500"

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Shield } from "lucide-react";
-import { Animal } from "../data/animals";
+import { type Animal } from "../features/Animal/Animal"; // Adjust the import path as necessary
 
 interface AnimalCardProps {
   animal: Animal;
@@ -27,7 +27,7 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
 
   return (
     <Link
-      to={`/animal/${animal.id}`}
+      to={`/animal/${animal.slug}`}
       className="group block bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1"
     >
       <div className="relative h-48 overflow-hidden">

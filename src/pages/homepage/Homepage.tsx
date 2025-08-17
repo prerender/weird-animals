@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Users, BookOpen } from "lucide-react";
 
 import { getAllCategories } from "~features/AnimalCategory/AnimalCategory";
+import { getAllAnimals, getRandomAnimal } from "~features/Animal/Animal";
 import AnimalCard from "../../components/AnimalCard";
-import { animals } from "../../data/animals";
 import pageContents from "./index.json";
 
 const categories = getAllCategories();
+const animals = getAllAnimals();
 
 export default function HomePage() {
   // Get featured animals (first 3)
   const featuredAnimals = animals.slice(0, 3);
+  const randomAnimalSlug = getRandomAnimal()?.slug;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -43,10 +45,15 @@ export default function HomePage() {
                 Explore Categories
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <button className="inline-flex items-center px-8 py-3 bg-teal-700/50 text-white rounded-lg font-semibold hover:bg-teal-700/70 transition-colors duration-300 backdrop-blur-sm border border-white/20">
-                <Globe className="mr-2 w-5 h-5" />
-                Random Discovery
-              </button>
+              {randomAnimalSlug && (
+                <Link
+                  to={`/animal/${randomAnimalSlug}`}
+                  className="inline-flex items-center px-8 py-3 bg-teal-700/50 text-white rounded-lg font-semibold hover:bg-teal-700/70 transition-colors duration-300 backdrop-blur-sm border border-white/20"
+                >
+                  <Globe className="mr-2 w-5 h-5" />
+                  Random Discovery
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -99,7 +106,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {featuredAnimals.map((animal) => (
-              <AnimalCard key={animal.id} animal={animal} />
+              <AnimalCard key={animal.slug} animal={animal} />
             ))}
           </div>
 
