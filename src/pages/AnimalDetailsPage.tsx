@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Ruler, Utensils, Shield, Info } from "lucide-react";
 
 import { getAnimalBySlug } from "~features/Animal/Animal";
-import { getCategoryByName } from "~features/AnimalCategory/AnimalCategory";
+import { getCategoryBySlug } from "~features/AnimalCategory/AnimalCategory";
 
 export default function AnimalDetailPage() {
   const { animalId } = useParams<{ animalId: string }>();
@@ -18,7 +18,7 @@ export default function AnimalDetailPage() {
     return <div>Animal not found</div>;
   }
 
-  const category = getCategoryByName(animal.category);
+  const category = getCategoryBySlug(animal.category);
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
