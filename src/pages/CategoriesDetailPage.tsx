@@ -2,8 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-import AnimalCard from "../../components/AnimalCard";
-import { categories } from "../../data/animals";
+import AnimalCard from "../components/AnimalCard";
 import { getAnimalsByCategory } from "~features/Animal/Animal";
 import { getCategoryBySlug } from "~features/AnimalCategory/AnimalCategory";
 
