@@ -11,6 +11,8 @@ const categories = getAllCategories();
 const animals = getAllAnimals();
 
 export default function HomePage() {
+  document.title = "Weird Animals";
+
   // Get featured animals (first 3)
   const featuredAnimals = animals.slice(0, 3);
   const randomAnimalSlug = getRandomAnimal()?.slug;

@@ -18,7 +18,7 @@ export default function Header() {
               <span className="text-white font-bold text-sm">WB</span>
             </div>
             <span className="text-xl font-bold text-gray-900">
-              Weird Bestiary
+              Weird Animals
             </span>
           </Link>
 
