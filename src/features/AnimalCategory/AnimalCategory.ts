@@ -38,7 +38,12 @@ export function getAllCategories(): AnimalCategory[] {
 export function getCategoryBySlug(slug: string): AnimalCategory | null {
   const categories = getAllCategories();
 
-  return categories.find((category) => category.slug === slug) || null;
+  return (
+    categories.find(
+      (category) =>
+        category.slug.toLocaleLowerCase() === slug.toLocaleLowerCase()
+    ) || null
+  );
 }
 
 export function getCategoryByName(name: string): AnimalCategory | null {
