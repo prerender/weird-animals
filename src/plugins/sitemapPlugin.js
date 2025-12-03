@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-const BASE_URL = 'https://weird-animals.netlify.app';
+const BASE_URL = 'https://weirdanimals.life/';
 
 const getJsonFiles = (dir) => {
   try {

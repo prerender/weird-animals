@@ -116,7 +116,7 @@ bestiary/
 ## 🗺 Sitemap
 
 The sitemap is available at:
-[https://weird-animals.netlify.app/sitemap.xml](https://weird-animals.netlify.app/sitemap.xml)
+[https://weirdanimals.life//sitemap.xml](https://weirdanimals.life//sitemap.xml)
 
 ## 🔧 Development Tips
 
