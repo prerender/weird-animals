@@ -113,6 +113,11 @@ bestiary/
 - **SEO Ready** - Structured data and semantic HTML
 - **Git-based CMS** - All content changes are version controlled
 
+## 🗺 Sitemap
+
+The sitemap is available at:
+[https://weird-animals.netlify.app/sitemap.xml](https://weird-animals.netlify.app/sitemap.xml)
+
 ## 🔧 Development Tips
 
 ### Adding New Animal Categories
