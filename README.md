@@ -152,6 +152,21 @@ Use these convenient imports:
 
 3. **Configure CMS backend** for your hosting provider (Netlify, GitHub, etc.)
 
+### Cloudflare Pages + Prerender (staging)
+
+To run on Cloudflare Pages with Prerender for crawler SEO:
+
+1. Deploy the **`dist/`** directory as a Cloudflare Pages project (with `_worker.js`, `_routes.json`, and `_headers` in the repo root so they are applied at deploy).
+2. In **Cloudflare Dashboard** → your Pages project → **Settings** → **Environment variables**, add:
+
+   | Name              | Value (plaintext)                                              |
+   |-------------------|-----------------------------------------------------------------|
+   | `PRERENDER_BASE`  | `https://private-cache.internal.prerender-staging.dev`          |
+   | `PRERENDER_TOKEN` | Your Prerender token (e.g. from testing-site staging settings) |
+
+3. Redeploy after saving env vars. Crawler requests will receive pre-rendered HTML from staging; users get the normal SPA.
+
 ---
 
 _Discover Earth's most extraordinary creatures! 🦅🐙🦎_
+# weird-animals2
