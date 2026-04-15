@@ -19,6 +19,10 @@ export default function SlothPage() {
   useEffect(() => {
     document.title = "Sloth - Weird Animals";
 
+    // Tell the prerender software we're not ready yet — we're about to
+    // start CPU-bound work and the final HTML won't exist until it's done.
+    window.prerenderReady = false;
+
     // Random duration between 2s and 20s.
     const target = Math.round(2000 + Math.random() * 18000);
     setDurationMs(target);
@@ -62,6 +66,8 @@ export default function SlothPage() {
 
       if (elapsed >= target) {
         setStatus("ready");
+        // Signal to the prerender software that the page is fully rendered.
+        window.prerenderReady = true;
         return;
       }
       // Yield to the event loop, then keep burning CPU.
