@@ -5,7 +5,6 @@ import HomePage from "./pages/homepage/Homepage";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryDetailPage from "./pages/CategoriesDetailPage";
 import AnimalDetailPage from "./pages/AnimalDetailsPage";
-import SlothPage from "./pages/SlothPage";
 
 function App() {
   const location =
@@ -27,7 +26,6 @@ function App() {
             element={<CategoryDetailPage />}
           />
           <Route path="/animal/:animalId" element={<AnimalDetailPage />} />
-          <Route path="/sloth" element={<SlothPage />} />
         </Routes>
       </div>
     </Router>
