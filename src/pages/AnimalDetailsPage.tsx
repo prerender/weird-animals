@@ -3,10 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Ruler, Utensils, Shield, Info } from "lucide-react";
 
 import { getAnimalBySlug } from "~features/Animal/Animal";
+import { useCpuBurn } from "~features/Animal/useCpuBurn";
 import { getCategoryBySlug } from "~features/AnimalCategory/AnimalCategory";
 
 export default function AnimalDetailPage() {
   const { animalId } = useParams<{ animalId: string }>();
+  const ready = useCpuBurn(animalId === "sloth", 5, 30);
 
   if (!animalId) {
     return <div>Animal not found</div>;
@@ -16,6 +18,14 @@ export default function AnimalDetailPage() {
 
   if (!animal) {
     return <div>Animal not found</div>;
+  }
+
+  if (!ready) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-600">
+        Loading {animal.name}…
+      </div>
+    );
   }
 
   const category = getCategoryBySlug(animal.category);

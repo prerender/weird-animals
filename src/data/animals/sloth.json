@@ -1,0 +1,19 @@
+{
+  "name": "Sloth",
+  "scientificName": "Folivora",
+  "category": "mammals",
+  "habitat": "Tropical rainforest canopy",
+  "location": "Central and South America",
+  "description": "Sloths are slow-moving arboreal mammals that spend most of their lives hanging upside down in the trees of tropical rainforests. Their incredibly slow metabolism means they can take up to a month to digest a single meal, and they descend to the ground only about once a week.",
+  "funFacts": [
+    "Move so slowly that algae grows on their fur, providing camouflage",
+    "Can take up to a month to digest a single leaf",
+    "Sleep for 15-20 hours a day",
+    "Only descend from trees about once a week to defecate",
+    "Have an extra neck vertebra letting them turn their heads 270 degrees"
+  ],
+  "conservationStatus": "Least Concern",
+  "image": "/uploads/sloth.jpg",
+  "size": "60-80 cm (24-31 inches)",
+  "diet": "Herbivore"
+}

@@ -1,10 +1,27 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./pages/homepage/Homepage";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryDetailPage from "./pages/CategoriesDetailPage";
 import AnimalDetailPage from "./pages/AnimalDetailsPage";
+
+// Flips window.prerenderReady to true for any route that doesn't manage
+// the signal itself. The sloth animal page opts out and flips it true
+// only once its CPU-bound work is finished.
+function PrerenderReadySignal() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/animal/sloth") return;
+    window.prerenderReady = true;
+  }, [location.pathname]);
+  return null;
+}
 
 function App() {
   const location =
@@ -16,6 +33,7 @@ function App() {
 
   return (
     <Router>
+      <PrerenderReadySignal />
       <div className="min-h-screen bg-gray-50">
         <Header />
         <Routes>
