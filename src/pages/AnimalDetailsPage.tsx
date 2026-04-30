@@ -3,12 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Ruler, Utensils, Shield, Info } from "lucide-react";
 
 import { getAnimalBySlug } from "~features/Animal/Animal";
-import { useCpuBurn } from "~features/Animal/useCpuBurn";
+import { useSlothLatency } from "~features/Animal/useSlothLatency";
 import { getCategoryBySlug } from "~features/AnimalCategory/AnimalCategory";
 
 export default function AnimalDetailPage() {
   const { animalId } = useParams<{ animalId: string }>();
-  const ready = useCpuBurn(animalId === "sloth", 5, 30);
+  const ready = useSlothLatency(animalId === "sloth");
 
   if (!animalId) {
     return <div>Animal not found</div>;
