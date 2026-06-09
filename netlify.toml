@@ -5,6 +5,21 @@
   publish = "dist"
   command = "npm run build"
 
+# Netlify Functions live in netlify/functions/ (this is Netlify's default,
+# stated explicitly for clarity).
+[functions]
+  directory = "netlify/functions"
+
+# QA-only: expose the qa-status function at the clean path /qa-status so
+# Prerender sees a normal-looking page URL. Must be declared BEFORE the
+# SPA catch-all below, otherwise /* swallows it. status = 200 is a Netlify
+# rewrite (proxy), which preserves the upstream function's actual status
+# code (200 or 500) — it does NOT force a 200 response.
+[[redirects]]
+  from = "/qa-status"
+  to = "/.netlify/functions/qa-status"
+  status = 200
+
 # Redirect all requests to /index.html for SPA routing
 [[redirects]]
   from = "/*"
