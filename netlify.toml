@@ -20,6 +20,16 @@
   to = "/.netlify/functions/qa-status"
   status = 200
 
+# QA-only: expose the qa-301 function at the clean path /qa-301. Same
+# rewrite-proxy mechanism as /qa-status above (status = 200 is the
+# rewrite TYPE, not a forced response code) — it preserves the
+# function's actual 301 status code AND its Location header. Must
+# remain BEFORE the SPA catch-all below.
+[[redirects]]
+  from = "/qa-301"
+  to = "/.netlify/functions/qa-301"
+  status = 200
+
 # Redirect all requests to /index.html for SPA routing
 [[redirects]]
   from = "/*"
