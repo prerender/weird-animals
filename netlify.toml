@@ -40,6 +40,50 @@
   to = "/.netlify/functions/qa-403"
   status = 200
 
+# QA-only: additional fixed-status endpoints handled by a single
+# parameterized function (netlify/functions/qa-code.ts). The function
+# inspects the public path it was hit at (req.url in v2 reflects the
+# original /qa-NNN, not the internal /.netlify/functions/qa-code) and
+# emits the matching status. Same rewrite-proxy mechanism as the QA
+# endpoints above — status = 200 is the rewrite TYPE, not a forced
+# response code, so Netlify preserves the function's real status code
+# and headers (Location for 3xx, Content-Type for 4xx HTML).
+# All MUST remain BEFORE the SPA catch-all below.
+[[redirects]]
+  from = "/qa-302"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-303"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-307"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-308"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-401"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-404"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
+[[redirects]]
+  from = "/qa-429"
+  to = "/.netlify/functions/qa-code"
+  status = 200
+
 # Redirect all requests to /index.html for SPA routing
 [[redirects]]
   from = "/*"
