@@ -20,6 +20,18 @@
   to = "/.netlify/functions/qa-status"
   status = 200
 
+# QA-only: expose the qa-block function at the clean path /qa-block.
+# Same env-toggled pattern as /qa-status above (its own dedicated
+# function rather than the parameterized qa-code, because the build-
+# time QA_FORCE_403 env var does not fit the generic dispatcher).
+# Same status = 200 rewrite-proxy mechanism — preserves the function's
+# real upstream status (200 or 403) and Content-Type. Must remain
+# BEFORE the SPA catch-all below.
+[[redirects]]
+  from = "/qa-block"
+  to = "/.netlify/functions/qa-block"
+  status = 200
+
 # QA-only: route /qa-301 to the parameterized qa-code function, which
 # emits a real HTTP 301 + Location header for this path. Same
 # rewrite-proxy mechanism as /qa-status above — status = 200 is the
