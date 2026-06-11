@@ -20,24 +20,24 @@
   to = "/.netlify/functions/qa-status"
   status = 200
 
-# QA-only: expose the qa-301 function at the clean path /qa-301. Same
-# rewrite-proxy mechanism as /qa-status above (status = 200 is the
-# rewrite TYPE, not a forced response code) — it preserves the
-# function's actual 301 status code AND its Location header. Must
-# remain BEFORE the SPA catch-all below.
+# QA-only: route /qa-301 to the parameterized qa-code function, which
+# emits a real HTTP 301 + Location header for this path. Same
+# rewrite-proxy mechanism as /qa-status above — status = 200 is the
+# rewrite TYPE, not a forced response code. Must remain BEFORE the
+# SPA catch-all below.
 [[redirects]]
   from = "/qa-301"
-  to = "/.netlify/functions/qa-301"
+  to = "/.netlify/functions/qa-code"
   status = 200
 
-# QA-only: expose the qa-403 function at the clean path /qa-403. Same
-# rewrite-proxy mechanism as the QA endpoints above (status = 200 is
-# the rewrite TYPE, not a forced response code) — it preserves the
-# function's actual 403 status and its text/html Content-Type. Must
-# remain BEFORE the SPA catch-all below.
+# QA-only: route /qa-403 to the parameterized qa-code function, which
+# emits a real HTTP 403 + text/html body for this path. Same
+# rewrite-proxy mechanism as the QA endpoints above — status = 200 is
+# the rewrite TYPE, not a forced response code. Must remain BEFORE the
+# SPA catch-all below.
 [[redirects]]
   from = "/qa-403"
-  to = "/.netlify/functions/qa-403"
+  to = "/.netlify/functions/qa-code"
   status = 200
 
 # QA-only: additional fixed-status endpoints handled by a single
