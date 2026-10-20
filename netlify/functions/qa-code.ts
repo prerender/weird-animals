@@ -17,7 +17,7 @@
 //
 // How the path is read:
 // - In Netlify Functions v2, req.url reflects the URL the client actually
-//   requested (e.g. https://weirdanimals.life/qa-302), even when the
+//   requested (e.g. https://weirdanimals.net/qa-302), even when the
 //   function was reached via a rewrite-proxy. We parse the pathname and
 //   match against an explicit allow-list of codes. Unknown paths return
 //   a 404 so misconfiguration fails loud instead of silently emitting a
@@ -37,7 +37,7 @@ type HtmlConfig = {
 
 type CodeConfig = RedirectConfig | HtmlConfig;
 
-const REDIRECT_LOCATION = "https://weirdanimals.life/";
+const REDIRECT_LOCATION = "https://weirdanimals.net/";
 
 const CODES: Record<string, CodeConfig> = {
   "301": { kind: "redirect", status: 301 },
